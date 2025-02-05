@@ -1,0 +1,11 @@
+{
+        "arbitrum_rpc": "<RPC>",
+        "optimism_rpc": "<RPC>",
+        "base_rpc": "<RPC>",
+        "start_block_arbitrum": 259100000,
+        "end_block_arbitrum": 290700000,
+        "start_block_base": 20500000,
+        "end_block_base": 24480000,
+        "start_block_optimism": 126100000,
+        "end_block_optimism": 130050000
+}
