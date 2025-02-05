@@ -466,7 +466,7 @@ def process_chain(path: str, provider: Provider):
     )
     curr = range_low
     delta = (range_high - range_low) // 50
-    while curr <= range_high:
+    while curr < range_high:
         curr_high = curr + delta
         df2x = df2.filter(
             (pl.col("block_number") >= curr) & (pl.col("block_number") < curr_high)
