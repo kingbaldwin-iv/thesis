@@ -15,3 +15,4 @@ src/*.parquet
 src/arbitrum/
 src/base/
 src/optimism/
+.DS_Store
