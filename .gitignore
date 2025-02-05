@@ -1,0 +1,17 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+src/config.json
+src/*.parquet
+
+# Ignore specific folders
+src/arbitrum/
+src/base/
+src/optimism/
