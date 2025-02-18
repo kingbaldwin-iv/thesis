@@ -83,25 +83,6 @@ def main2(tx_hash):
         v = {"tx_hash":TX_HASH,"flattened_trace": x, "to": d[x+"_to"], "from": d[x+"_from"], "function_selector":d[x+"_input"][:10], "gas_used":int(d[x+"_gasUsed"],16)}
         df.append(v)
     return df
-    
-
-
-def main():
-    df = pl.read_parquet("arbitrum_mev.parquet").join(
-            pl.read_parquet("tx_data_arb.parquet"), 
-            on="transaction_hash")
-    df2 = df.group_by("senders").count()
-    print(df2)
-    df = df.group_by("senders").agg(
-            pl.count().alias("count"),
-            pl.col("gas").mean().alias("mean_gas"), 
-            pl.col("gas_price").mean().alias("mean_gas_price"),
-            (pl.col("gas_price")*pl.col("gas")*(10**(-18))).mean().alias("mean_gas_paid"),
-            pl.col("gas").sum().alias("total_gas_used"),
-            (pl.col("gas_price")*(10**(-18))*pl.col("gas")).sum().alias("total_gas_paid")
-            )
-
-    df.write_parquet("senders_tx_data_agg.parquet")
 
 if __name__ == "__main__":
     num_cores = multiprocessing.cpu_count()  # Get number of CPU cores
